@@ -1,0 +1,25 @@
+{
+  "name": "team_profile_generator",
+  "version": "1.0.0",
+  "description": "```md AS A manager I WANT to generate a webpage that displays my team's basic info SO THAT I have quick access to their emails and GitHub profiles ```",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PFZM/Team_Profile_Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PFZM/Team_Profile_Generator/issues"
+  },
+  "homepage": "https://github.com/PFZM/Team_Profile_Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
