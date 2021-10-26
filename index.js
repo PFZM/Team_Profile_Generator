@@ -7,23 +7,93 @@ const fs = require("fs");
 
 const teamMembers = [];
 
-const init = () => {
+const init = async () => {
   console.log("Please build your team");
-  const manager = new Manager();
-  manager
-    .getName()
-    .then(() => manager.getId())
-    .then(() => manager.getEmail())
-    .then(() => manager.getOfficeNumber())
-    .then(() => chooseOption())
-    .then(() => {
-      console.log(manager);
-      console.log(teamMembers);
-    })
-    .catch((err) => console.error(err));
+  await getEmployeeDetails("Manager");
+  await chooseOption();
+  console.log(teamMembers);
+
+  let cards = fs.readFileSync("./dist/index.html");
 };
 
-const chooseOption = () => {
+async function getEmployeeDetails(employeeRole) {
+  const role = employeeRole;
+  const answers = await inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: `What is your ${role}'s name?`,
+    },
+    {
+      type: "input",
+      name: "ID",
+      message: `What is your ${role}'s id?`,
+      validate: (val_1) => /^[0-9]+$/.test(val_1),
+    },
+    {
+      type: "input",
+      name: "email",
+      message: `What is your ${role}'s email?`,
+      validate: (val_3) =>
+        /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(
+          val_3
+        ),
+    },
+  ]);
+  if (role === "Manager") {
+    return inquirer
+      .prompt({
+        type: "input",
+        name: "office",
+        message: "What is your Manager's office number?",
+        validate: (val_5) => /^[0-9]+$/.test(val_5),
+      })
+      .then((answer) => {
+        const manager = new Manager(
+          answers.name,
+          answers.ID,
+          answers.email,
+          answer.office
+        );
+        teamMembers.push(manager);
+        return;
+      });
+  } else if (role === "Engineer") {
+    return inquirer
+      .prompt({
+        type: "input",
+        name: "GitHub",
+        message: "What is your GitHub username?",
+      })
+      .then((answer_1) => {
+        const engineer = new Engineer(
+          answers.name,
+          answers.ID,
+          answers.email,
+          answer_1.GitHub
+        );
+        teamMembers.push(engineer);
+      });
+  } else if (role === "Intern") {
+    return inquirer
+      .prompt({
+        type: "input",
+        name: "school",
+        message: "What is your school's name?",
+      })
+      .then((answer_2) => {
+        const intern = new Intern(
+          answers.name,
+          answers.ID,
+          answers.email,
+          answer_2.school
+        );
+        teamMembers.push(intern);
+      });
+  }
+}
+
+function chooseOption() {
   return inquirer
     .prompt({
       type: "list",
@@ -35,34 +105,18 @@ const chooseOption = () => {
         "I don't want to add any more team members",
       ],
     })
-    .then((choice) => {
+    .then(async (choice) => {
       if (choice.options === "Engineer") {
-        const engineer = new Engineer();
-        return engineer
-          .getName()
-          .then(() => engineer.getId())
-          .then(() => engineer.getEmail())
-          .then(() => engineer.getGithub())
-          .then(() => {
-            teamMembers.push(engineer);
-            return chooseOption();
-          });
+        await getEmployeeDetails("Engineer");
+        return chooseOption();
       }
 
       if (choice.options === "Intern") {
-        const intern = new Intern();
-        return intern
-          .getName()
-          .then(() => intern.getId())
-          .then(() => intern.getEmail())
-          .then(() => intern.getSchool())
-          .then(() => {
-            teamMembers.push(intern);
-            return chooseOption();
-          });
+        await getEmployeeDetails("Intern");
+        return chooseOption();
       }
       return;
     });
-};
+}
 
 init();
