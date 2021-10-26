@@ -1,55 +1,63 @@
-## User Story
+# README - TEAM PROFILE GENERATOR
 
-```md
-AS A manager
-I WANT to generate a webpage that displays my team's basic info
-SO THAT I have quick access to their emails and GitHub profiles
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Link to see the deployed application:
+
+[YouTube video]()
+
+## Description
+
+file by using a command-line application from a user's input using the [Inquirer package](https://www.npmjs.com/package/inquirer).
+
+## Table of contents:
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [License](#license)
+4. [Contributing](#contributing)
+5. [Test](test)
+6. [Questions](#questions)
+
+## Installation
+
+1. Fork repository
+2. Clone repository to local environment.
+3. Run npm install.
+4. Install all dependencies: Inquirer (should you wish to perform test please install Jest)
+
+## Usage
+
+The application is invoked by using the following command (on the directory containing this project):
+
+```bash
+node index.js
 ```
 
-## Acceptance Criteria
+Questions will be prompt
 
-```md
-GIVEN a command-line application that accepts user input
-WHEN I am prompted for my team members and their information
-THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-WHEN I click on an email address in the HTML
-THEN my default email program opens and populates the TO field of the email with the address
-WHEN I click on the GitHub username
-THEN that GitHub profile opens in a new tab
-WHEN I start the application
-THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-WHEN I enter the team manager’s name, employee ID, email address, and office number
-THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-WHEN I select the engineer option
-THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-WHEN I select the intern option
-THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-WHEN I decide to finish building my team
-THEN I exit the application, and the HTML is generated
+## License
+
+This project is covered under the MIT license.
+
+## Contributing
+
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+Please note we have a code of conduct, please follow it in all your interactions with the project.
+Contributions follow the [Contributor Convenant](http://contributor-covenant.org/version/1/4/).
+
+## Test
+
+100% test coverage on classes using Jest package.
+
+To run test:
+
+```bash
+npm run test
 ```
 
-Inquire NPM
-Jest
+## Questions
 
-Team manager's name
-Employee ID
-Email address
-Office number
+[GitHub profile](http://github.com/PFZM)
 
-Menu:
-Engineer or an intern
-Engineer:
-Name
-ID
-Email
-Github
-Back to menu
-
-Intern:
-Name
-ID
-email
-School
-Back to menu
-
-Exit the application and HTML is generated
+[Contact Me - Email](mailto:pfzm@hotmail.com)
