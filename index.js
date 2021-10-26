@@ -12,7 +12,7 @@ const init = async () => {
   console.log("Please build your team");
   await getEmployeeDetails("Manager");
   await chooseOption();
-  console.log(employeeCards.join("\n"));
+  console.log(employeeCards.join(""));
   renderEmployeeCards();
 };
 
@@ -95,7 +95,7 @@ async function getEmployeeDetails(employeeRole) {
             <div class="information-card">
               <p>ID: ${engineer.id}</p>
               <p>Email: <a href="mailto: ${engineer.email}">${engineer.email}</a></p>
-              <p>Github: <a href="https://github.com/${engineer.github}">Github</a></p>
+              <p>Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
             </div>
           </div>
         </div>`;
@@ -124,7 +124,7 @@ async function getEmployeeDetails(employeeRole) {
           <div class="body-card">
             <div class="information-card">
               <p>ID: ${intern.id}</p>
-              <p>Email: <a href="mailto: ${intern.email}">Email</a></p>
+              <p>Email: <a href="mailto: ${intern.email}">${intern.email}</a></p>
               <p>University: ${intern.school}</p>
             </div>
           </div>
@@ -162,18 +162,12 @@ function chooseOption() {
 }
 
 function renderEmployeeCards() {
-  fs.readFileSync("./dist/index.html", "utf8", function (err, data) {
-    if (err) {
-      return console.log(err);
-    }
-    const result = data.replace(
-      "{{ENGINEERING_MANAGER_PLACEHOLDER}}",
-      employeeCards.join("\n")
-    );
-    fs.writeFileSync("./dist/index.html", result, "utf8", function (err) {
-      if (err) return cconsole.log(err);
-    });
-  });
+  const data = fs.readFileSync("./src/index.html", "utf8");
+  const result = data.replace(
+    "{{MANAGER_ENGINEER_INTERN_PLACEHOLDER}}",
+    employeeCards.join("\n")
+  );
+  fs.writeFileSync("./dist/employees.html", result);
 }
 
 init();
