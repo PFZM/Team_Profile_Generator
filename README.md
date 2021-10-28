@@ -4,11 +4,13 @@
 
 ## Link to see the deployed application:
 
-[YouTube video]()
+[YouTube video](https://youtu.be/ThEISjwUbnQ)
 
 ## Description
 
-file by using a command-line application from a user's input using the [Inquirer package](https://www.npmjs.com/package/inquirer).
+This is a node.js that generates an html with contact cards for employees of a specific team on a business by using a command-line application from a user's input using the [Inquirer package](https://www.npmjs.com/package/inquirer).
+
+This app has been tested using the [Jest Testing Framework](https://jestjs.io/)
 
 ## Table of contents:
 
@@ -23,8 +25,12 @@ file by using a command-line application from a user's input using the [Inquirer
 
 1. Fork repository
 2. Clone repository to local environment.
-3. Run npm install.
-4. Install all dependencies: Inquirer (should you wish to perform test please install Jest)
+3. Node.js must be installed.
+4. To install all the dependencies (Inquirer, Jest to perform tests) use the following command:
+
+```bash
+npm install
+```
 
 ## Usage
 
@@ -34,7 +40,25 @@ The application is invoked by using the following command (on the directory cont
 node index.js
 ```
 
-Questions will be prompt
+The following questions will be prompted asking for the Manager details, followed by a list of options to select to input the details of Engineer and Intern or to generate the html:
+
+![Manager Questions](./images/manager.png)
+
+Engineer questions:
+
+![Engineer Questions](./images/engineer.png)
+
+Intern questions:
+
+![Intern Questions](./images/intern.png)
+
+HTML will be generated on 'dist' folder under the name 'employee.html':
+
+![dist folder](./images/dist.png)
+
+Mockup for the generated html:
+
+![employees.html](./images/employeeshtml.png)
 
 ## License
 
@@ -55,6 +79,8 @@ To run test:
 ```bash
 npm run test
 ```
+
+![test](./images/test.gif)
 
 ## Questions
 

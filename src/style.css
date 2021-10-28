@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
   font-size: 62.5%;
+  height: 100%;
 }
 
 h1 {
@@ -25,17 +27,15 @@ header {
   height: 15%;
 }
 
-main {
+body {
   background-color: rgb(211, 201, 186);
-  height: 100%;
 }
-
 .display-cards {
   margin: 3rem 5rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  height: auto;
+  height: 100%;
 }
 
 .card {
@@ -43,7 +43,7 @@ main {
   transition: 0.3s;
   width: 25rem;
   height: 17rem;
-  margin: auto;
+  margin: 2rem 5rem;
 }
 
 .name-role {
@@ -59,12 +59,17 @@ main {
 
 .body-card {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(177, 155, 121);
   height: 100%;
 }
 
 .information-card {
   position: relative;
+  width: 70%;
+  height: max-content;
   font-size: 1.5rem;
   margin: 0 3rem;
   background-color: rgb(205, 202, 202);

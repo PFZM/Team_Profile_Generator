@@ -12,7 +12,6 @@ const init = async () => {
   console.log("Please build your team");
   await getEmployeeDetails("Manager");
   await chooseOption();
-  console.log(employeeCards.join(""));
   renderEmployeeCards();
 };
 
